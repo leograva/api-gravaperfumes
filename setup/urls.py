@@ -1,13 +1,13 @@
 from django.contrib import admin
 from django.urls import path,include
 #from escola.views import AlunosViewSet, CursosViewSet, MatriculasViewSet, ListaMatriculasAluno, ListaAlunosMatriculados
-from gravaperfumes.views import EstoquesViewSet, FabricantesViewSet, PerfumesViewSet
+from gravaperfumes.views import ClientesViewSet, FabricantesViewSet, PerfumesViewSet
 from rest_framework import routers
 
 router = routers.DefaultRouter()
+router.register('clientes',ClientesViewSet,basename ='Clientes')
 router.register('fabricantes',FabricantesViewSet,basename ='Fabricantes')
 router.register('perfumes',PerfumesViewSet,basename ='Perfumes')
-router.register('estoques',EstoquesViewSet,basename ='Estoques')
 
 
 urlpatterns = [
