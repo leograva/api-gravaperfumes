@@ -45,3 +45,5 @@ class Venda(models.Model):
     perfume = models.ForeignKey(Perfume, on_delete=models.PROTECT)
     cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
     data_venda = models.DateField()
+    def __str__(self):
+        return '__all__'
