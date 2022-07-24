@@ -24,7 +24,7 @@ class Perfume(models.Model):
     
     #CAMPOS
     nome = models.CharField(max_length=50)
-    fabricante = models.ForeignKey(Fabricante, on_delete=models.CASCADE)
+    fabricante = models.ForeignKey(Fabricante, on_delete=models.PROTECT)
     tamanho = models.TextField(max_length=5,choices=TAMANHOS, blank=False,null=False,default='100ml')
     genero = models.CharField(max_length=1, choices=GENEROS, blank=False,null=False,default='M')
     tipo = models.CharField(max_length=3, choices=TIPOS, blank=False,null=False,default='EDT')
@@ -35,9 +35,13 @@ class Perfume(models.Model):
         return '__all__'
 
 class Estoque(models.Model):
-    perfume = models.ForeignKey(Perfume, on_delete=models.CASCADE)
+    perfume = models.ForeignKey(Perfume, on_delete=models.PROTECT)
     quantidade = models.DecimalField(max_digits=5, decimal_places=0)
 
     def __str__(self):
         return '__all__'
 
+class Venda(models.Model):
+    perfume = models.ForeignKey(Perfume, on_delete=models.PROTECT)
+    cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
+    data_venda = models.DateField()
