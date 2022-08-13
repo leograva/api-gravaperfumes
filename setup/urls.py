@@ -10,8 +10,9 @@ router.register('perfumes',PerfumesViewSet,basename ='Perfumes')
 router.register('vendas',VendasViewSet,basename='Vendas')
 
 urlpatterns = [
+    path('',include('gravaperfumes.urls')),
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
-    #path('perfumes/<int:pk>/fabricante/', ListaPerfumesFabricante.as_view()),
-    #path('curso/<int:pk>/matriculas/', ListaAlunosMatriculados.as_view()),
+    path('api/', include(router.urls)),
+    #path('api/perfumes/<int:pk>/fabricante/', ListaPerfumesFabricante.as_view()),
+    #path('api/curso/<int:pk>/matriculas/', ListaAlunosMatriculados.as_view()),
 ]
